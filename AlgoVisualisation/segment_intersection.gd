@@ -115,12 +115,14 @@ var inserted_lines = Array()
 var removed_lines = Array()
 var flipped_lines = Array()
 
+
 func clear_temp_arrays():
 	inserted_events.clear()
 	removed_events.clear()
 	inserted_lines.clear()
 	removed_lines.clear()
 	flipped_lines.clear()
+
 
 func _process(delta):
 	if not Global.play:
@@ -264,8 +266,7 @@ func process_possible_intersection(l1: TwoPLine, l2: TwoPLine, sweep_y: float):
 		var ei: EventIntersection = EventIntersection.new(pos.y, intersection)
 		#print("Adding ", ei)
 		insert_event(ei)
-		return true
-	return false
+
 
 func remove_possible_intersection(i: int, sweep_y: float):
 	if not (i+1<len(ordered_lines) and i>=0):
@@ -285,11 +286,3 @@ func remove_possible_intersection(i: int, sweep_y: float):
 		removed_events.append(events[j])
 		events.remove_at(j)
 		#print("Adding ", ei)
-		
-	
-# after event is reached stop the animation 
-# process the event
-# pause for 0.1s and wait for next event to be reached
-
-# TODO add stop/resume button
-# add stop on event toggle
