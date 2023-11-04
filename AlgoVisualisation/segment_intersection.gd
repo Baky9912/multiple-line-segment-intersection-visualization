@@ -113,7 +113,14 @@ var inserted_events = Array()
 var removed_events = Array()
 var inserted_lines = Array()
 var removed_lines = Array()
+var flipped_lines = Array()
 
+func clear_temp_arrays():
+	inserted_events.clear()
+	removed_events.clear()
+	inserted_lines.clear()
+	removed_lines.clear()
+	flipped_lines.clear()
 
 func _process(delta):
 	if not Global.play:
@@ -123,10 +130,12 @@ func _process(delta):
 	var stop_y = 10000.0 if events.is_empty() else events.front().y-2
 	sweep_line.position.y = min(sweep_line.position.y + Global.speed*delta, stop_y)
 	if not events.is_empty() and sweep_line.position.y+2 >= events.front().y:
+		clear_temp_arrays()
 		process_top_event()
 		#print("INSERTED EVENTS\n------------------\n")
 		#print(inserted_events)
-		add_important_text($ColorRect2/LinesRTB, "Lines: ", ordered_lines, inserted_lines)
+		add_important_text($ColorRect2/LinesRTB, "Lines: ",
+			ordered_lines, inserted_lines+flipped_lines)
 		add_important_text($ColorRect2/EventsRTB, "Events: ", events, inserted_events)
 		add_important_text($ColorRect2/RemovedLinesRTB, "Removed lines: ", removed_lines, [])
 		add_important_text($ColorRect2/RemovedEventsRTB, "Removed events: ", removed_events, [])
@@ -136,7 +145,7 @@ func _process(delta):
 			set_process(false)
 			await get_tree().create_timer(0.3 * 50 /Global.speed).timeout
 			set_process(true)
-
+		
 
 func setup_line_events():
 	for line in lines:
@@ -181,12 +190,7 @@ func find_largest_smaller_x(entry_x: float, y: float):
 	return best
 
 
-func process_top_event():
-	inserted_events.clear()
-	removed_events.clear()
-	inserted_lines.clear()
-	removed_lines.clear()
-	
+func process_top_event():	
 	var e = events.pop_front()
 	removed_events.append(e)
 	
@@ -243,6 +247,9 @@ func process_top_event():
 		ordered_lines[i] = ordered_lines[j]
 		ordered_lines[j] = tmp
 		
+		flipped_lines.append(ordered_lines[i])
+		flipped_lines.append(ordered_lines[j])
+		
 		if i>0:
 			process_possible_intersection(ordered_lines[i], ordered_lines[i-1], e.y)
 		if j+1 < len(ordered_lines):
@@ -257,7 +264,8 @@ func process_possible_intersection(l1: TwoPLine, l2: TwoPLine, sweep_y: float):
 		var ei: EventIntersection = EventIntersection.new(pos.y, intersection)
 		#print("Adding ", ei)
 		insert_event(ei)
-
+		return true
+	return false
 
 func remove_possible_intersection(i: int, sweep_y: float):
 	if not (i+1<len(ordered_lines) and i>=0):
@@ -267,7 +275,7 @@ func remove_possible_intersection(i: int, sweep_y: float):
 	var pos = l1.line_intersection_point(l2)
 	if pos is Vector2 and pos.y >= sweep_y:
 		var intersection = Intersection.new(pos, l1, l2)
-		var ei: EventIntersection = EventIntersection.new(pos.y, intersection)
+		#var ei: EventIntersection = EventIntersection.new(pos.y, intersection)
 		var j = -1
 		for k in len(events):
 			if events[k] is EventIntersection and intersection.equals(events[k].intersection):

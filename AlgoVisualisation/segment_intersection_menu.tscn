@@ -1,12 +1,19 @@
-[gd_scene load_steps=4 format=3 uid="uid://cii1ihgh4btk3"]
+[gd_scene load_steps=10 format=3 uid="uid://cii1ihgh4btk3"]
 
+[ext_resource type="Script" path="res://segment_intersection_menu.gd" id="1_nxt1o"]
 [ext_resource type="PackedScene" uid="uid://derskiomatdqh" path="res://coordinate_system.tscn" id="1_was6d"]
 [ext_resource type="Script" path="res://buttons/play_segment_intersection.gd" id="2_ymxg1"]
+[ext_resource type="Texture2D" uid="uid://b5kdhhdvy4wmw" path="res://assets/pauseevent.png" id="3_32w66"]
+[ext_resource type="Texture2D" uid="uid://cnahb0875jmr7" path="res://assets/plus64.png" id="4_yp40d"]
+[ext_resource type="Texture2D" uid="uid://wxsltww2twlq" path="res://assets/minus64.png" id="5_2yytt"]
+[ext_resource type="Texture2D" uid="uid://nvej8slh8ya" path="res://assets/back.png" id="6_btukp"]
+[ext_resource type="Texture2D" uid="uid://ccrcrn541ivmn" path="res://assets/playpause.png" id="7_4gyrc"]
 
 [sub_resource type="Theme" id="Theme_thapl"]
 LineEdit/colors/selection_color = Color(0.513726, 0.498039, 0.462745, 1)
 
 [node name="segment_intersection_menu" type="Node2D"]
+script = ExtResource("1_nxt1o")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 offset_right = 1800.0
@@ -20,9 +27,9 @@ points = PackedVector2Array(0, -500, 0, 647, 2000, 647)
 [node name="LinesCountTbx" type="LineEdit" parent="ColorRect"]
 layout_mode = 0
 offset_left = 457.0
-offset_top = 144.0
+offset_top = 160.0
 offset_right = 793.0
-offset_bottom = 228.0
+offset_bottom = 244.0
 theme_override_font_sizes/font_size = 25
 text = "20"
 alignment = 1
@@ -30,9 +37,9 @@ alignment = 1
 [node name="RngSeedTbx" type="LineEdit" parent="ColorRect"]
 layout_mode = 0
 offset_left = 457.0
-offset_top = 381.0
+offset_top = 397.0
 offset_right = 793.0
-offset_bottom = 465.0
+offset_bottom = 481.0
 theme = SubResource("Theme_thapl")
 theme_override_font_sizes/font_size = 25
 text = "17"
@@ -41,9 +48,9 @@ alignment = 1
 [node name="MeanLineLenTbx" type="LineEdit" parent="ColorRect"]
 layout_mode = 0
 offset_left = 457.0
-offset_top = 260.0
+offset_top = 276.0
 offset_right = 793.0
-offset_bottom = 344.0
+offset_bottom = 360.0
 theme_override_font_sizes/font_size = 25
 text = "400"
 alignment = 1
@@ -51,9 +58,9 @@ alignment = 1
 [node name="Button" type="Button" parent="ColorRect"]
 layout_mode = 0
 offset_left = 457.0
-offset_top = 504.0
+offset_top = 520.0
 offset_right = 793.0
-offset_bottom = 588.0
+offset_bottom = 604.0
 theme_override_font_sizes/font_size = 30
 text = "Click to play"
 script = ExtResource("2_ymxg1")
@@ -61,9 +68,9 @@ script = ExtResource("2_ymxg1")
 [node name="Label" type="Label" parent="ColorRect"]
 layout_mode = 0
 offset_left = 111.0
-offset_top = 144.0
+offset_top = 160.0
 offset_right = 447.0
-offset_bottom = 228.0
+offset_bottom = 244.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 27
@@ -74,9 +81,9 @@ vertical_alignment = 1
 [node name="Label2" type="Label" parent="ColorRect"]
 layout_mode = 0
 offset_left = 111.0
-offset_top = 381.0
+offset_top = 397.0
 offset_right = 447.0
-offset_bottom = 465.0
+offset_bottom = 481.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 27
@@ -87,9 +94,9 @@ vertical_alignment = 1
 [node name="Label3" type="Label" parent="ColorRect"]
 layout_mode = 0
 offset_left = 111.0
-offset_top = 260.0
+offset_top = 276.0
 offset_right = 447.0
-offset_bottom = 344.0
+offset_bottom = 360.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 27
@@ -100,9 +107,9 @@ vertical_alignment = 1
 [node name="ErrorLabel" type="Label" parent="ColorRect"]
 layout_mode = 0
 offset_left = 457.0
-offset_top = 612.0
+offset_top = 628.0
 offset_right = 793.0
-offset_bottom = 696.0
+offset_bottom = 683.0
 theme_override_colors/font_color = Color(0.796078, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 27
@@ -111,16 +118,90 @@ vertical_alignment = 1
 
 [node name="Label4" type="Label" parent="ColorRect"]
 layout_mode = 0
-offset_left = 272.0
-offset_top = 29.0
-offset_right = 725.0
-offset_bottom = 113.0
+offset_left = 2.0
+offset_top = 16.0
+offset_right = 1800.0
+offset_bottom = 120.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 27
-text = "Multiple line segment intersection
-Bentley–Ottmann algorithm"
+theme_override_font_sizes/font_size = 35
+text = "Multiple line segment intersection, Bentley–Ottmann algorithm"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="Pauseevent" type="Sprite2D" parent="ColorRect"]
+position = Vector2(944, 392)
+texture = ExtResource("3_32w66")
+
+[node name="Label8" type="Label" parent="ColorRect/Pauseevent"]
+self_modulate = Color(0, 0, 0, 1)
+offset_left = 68.0
+offset_top = -21.0
+offset_right = 242.0
+offset_bottom = 25.0
+theme_override_font_sizes/font_size = 30
+text = "Pause on event toggle (resume with play button)"
+
+[node name="Plus64" type="Sprite2D" parent="ColorRect"]
+position = Vector2(943, 470)
+texture = ExtResource("4_yp40d")
+
+[node name="Label7" type="Label" parent="ColorRect/Plus64"]
+self_modulate = Color(0, 0, 0, 1)
+offset_left = 69.0
+offset_top = -19.0
+offset_right = 243.0
+offset_bottom = 27.0
+theme_override_font_sizes/font_size = 30
+text = "Increase simulation speed"
+
+[node name="Minus64" type="Sprite2D" parent="ColorRect"]
+position = Vector2(945, 545)
+texture = ExtResource("5_2yytt")
+
+[node name="Label6" type="Label" parent="ColorRect/Minus64"]
+self_modulate = Color(0, 0, 0, 1)
+offset_left = 67.0
+offset_top = -22.0
+offset_right = 241.0
+offset_bottom = 24.0
+theme_override_font_sizes/font_size = 30
+text = "Decrease simulation speed"
+
+[node name="Back" type="Sprite2D" parent="ColorRect"]
+position = Vector2(945, 604)
+texture = ExtResource("6_btukp")
+
+[node name="Label9" type="Label" parent="ColorRect/Back"]
+self_modulate = Color(0, 0, 0, 1)
+offset_left = 67.0
+offset_top = -17.0
+offset_right = 241.0
+offset_bottom = 29.0
+theme_override_font_sizes/font_size = 30
+text = "Back to menu"
+
+[node name="Playpause" type="Sprite2D" parent="ColorRect"]
+position = Vector2(943, 308)
+texture = ExtResource("7_4gyrc")
+
+[node name="Label5" type="Label" parent="ColorRect/Playpause"]
+self_modulate = Color(0, 0, 0, 1)
+offset_left = 69.0
+offset_top = -18.0
+offset_right = 243.0
+offset_bottom = 28.0
+theme_override_font_sizes/font_size = 30
+text = "Play/Pause"
+
+[node name="Label5" type="Label" parent="ColorRect"]
+self_modulate = Color(0, 0, 0, 1)
+offset_left = 911.0
+offset_top = 160.0
+offset_right = 1427.0
+offset_bottom = 252.0
+theme_override_font_sizes/font_size = 26
+text = "Time complexity : O((N+K)logN)
+Space complexity O(N)"
 
 [connection signal="pressed" from="ColorRect/Button" to="ColorRect/Button" method="_on_pressed"]
