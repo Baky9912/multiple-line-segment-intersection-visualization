@@ -1,0 +1,35 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=5
+
+[application]
+
+config/name="Multiple line segment intersection visualization"
+run/main_scene="res://segment_intersection_menu.tscn"
+config/features=PackedStringArray("4.1", "Forward Plus")
+config/icon="res://assets/icon.svg"
+
+[autoload]
+
+Global="*res://global.gd"
+
+[display]
+
+window/size/viewport_width=1800
+window/size/viewport_height=720
+window/size/resizable=false
+
+[gui]
+
+theme/custom_font="res://assets/fonts/lmroman10-bold.otf"
+
+[rendering]
+
+anti_aliasing/quality/msaa_2d=3
+anti_aliasing/quality/screen_space_aa=1

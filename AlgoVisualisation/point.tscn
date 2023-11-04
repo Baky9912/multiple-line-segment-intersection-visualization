@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://clnyjtgbj7h83"]
+
+[ext_resource type="Texture2D" uid="uid://dtftq6jb51tpe" path="res://assets/whitecircle16x16png.png" id="1_sbotf"]
+[ext_resource type="Script" path="res://point.gd" id="2_s824m"]
+
+[node name="Point" type="TextureRect" groups=["points"]]
+self_modulate = Color(0, 0, 0, 1)
+texture_filter = 1
+texture = ExtResource("1_sbotf")
+script = ExtResource("2_s824m")
+
+[node name="Label" type="Label" parent="."]
+self_modulate = Color(0.00392157, 0.12549, 0.603922, 1)
+texture_filter = 1
+layout_mode = 1
+offset_left = 14.0
+offset_top = 4.0
+offset_right = 54.0
+offset_bottom = 30.0
+text = "#n"

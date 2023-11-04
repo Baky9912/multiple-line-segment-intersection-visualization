@@ -1,0 +1,7 @@
+[gd_scene load_steps=3 format=3 uid="uid://bc1gd6qxc84qh"]
+
+[ext_resource type="PackedScene" uid="uid://dmn8vhhxyfb30" path="res://2p_line.tscn" id="1_l3sa5"]
+[ext_resource type="Script" path="res://StaticTwoPLine.gd" id="2_6y620"]
+
+[node name="TwoPLine" instance=ExtResource("1_l3sa5")]
+script = ExtResource("2_6y620")

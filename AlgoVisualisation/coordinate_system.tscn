@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://derskiomatdqh"]
+
+[ext_resource type="Script" path="res://coordinate_system.gd" id="1_isq27"]
+
+[node name="CoordinateSystem" type="Line2D"]
+scale = Vector2(1.02786, 0.996274)
+points = PackedVector2Array(0, -500, 0, 647, 1500, 647)
+width = 2.0
+default_color = Color(0, 0, 0, 1)
+script = ExtResource("1_isq27")

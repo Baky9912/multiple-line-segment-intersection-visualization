@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://cllhyf7qhoy1k"]
+
+[ext_resource type="PackedScene" uid="uid://clnyjtgbj7h83" path="res://point.tscn" id="1_50ng3"]
+[ext_resource type="Script" path="res://small_point.gd" id="1_wrr5s"]
+
+[node name="Point" instance=ExtResource("1_50ng3")]
+scale = Vector2(0.5, 0.5)
+script = ExtResource("1_wrr5s")
+
+[node name="Label" parent="." index="0"]
+scale = Vector2(2, 2)

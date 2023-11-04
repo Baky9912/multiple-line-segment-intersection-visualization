@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://dmn8vhhxyfb30"]
+
+[ext_resource type="Script" path="res://2p_line.gd" id="1_r7trw"]
+
+[node name="TwoPLine" type="Line2D" groups=["st_line"]]
+texture_filter = 2
+points = PackedVector2Array(0, 0, 0, 0)
+default_color = Color(0.0823529, 0.0823529, 0.0823529, 1)
+script = ExtResource("1_r7trw")
